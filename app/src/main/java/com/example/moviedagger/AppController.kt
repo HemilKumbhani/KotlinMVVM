@@ -13,6 +13,9 @@ import java.util.*
 
 class AppController : MultiDexApplication() {
 
+
+
+
     companion object {
         lateinit var mAppController: AppController
         lateinit var mServices: ApiServices
