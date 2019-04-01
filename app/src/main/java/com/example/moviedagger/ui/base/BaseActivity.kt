@@ -1,6 +1,9 @@
 package com.example.moviedagger.ui.base
 
+import android.Manifest
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviedagger.AppController
 import com.example.moviedagger.di.component.ActivityComponent
@@ -15,13 +18,7 @@ abstract class BaseActivity: AppCompatActivity(),BaseView {
 
      abstract fun getLayout():Int
 
-     override fun onAttachView(view: BaseView) {
 
-
-     }
-     override fun onDettachView() {
-
-     }
      override fun hideLoading() {
 
      }
@@ -34,13 +31,31 @@ abstract class BaseActivity: AppCompatActivity(),BaseView {
     lateinit var mActivityComponent:ActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         mActivityComponent= DaggerActivityComponent.builder()
             .appComponent((application as AppController).mAppComponent)
             .activityModule(ActivityModule(this))
             .build()
+        injectComponents(mActivityComponent)
+
+        super.onCreate(savedInstanceState)
+        if (getLayout() != 0) {
+            setContentView(getLayout())
+            setUp()
+
+            mActivityComponent.inject(this)
+
+        } else {
+            throw Exception("Layout must not be empty")
+        }
 
 
 
     }
+    fun getActivityComponent(): ActivityComponent {
+        return mActivityComponent
+    }
+    abstract fun setUp()
+
+
+    abstract fun injectComponents(mActivityComponent: ActivityComponent)
  }

@@ -18,7 +18,7 @@ class ApiClient{
         const val AUTHORIZATION = "Authorization"
         const val LANGUAGE = "Accept-Language"
         private lateinit var retrofit: Retrofit
-        const val BASE_URL = "https://x76h951q.dtechno.co.uk/"
+        const val BASE_URL = "https://api.themoviedb.org/3/movie/"
     }
 
 
