@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.moviedagger.data.api.ApiClient
 import com.example.moviedagger.data.ApiServices
+import com.example.moviedagger.data.AppDataManger
 import com.example.moviedagger.di.ApplicationContext
 import dagger.Module
 import dagger.Provides
@@ -30,10 +31,9 @@ class AppModule constructor(val mApplication: Application) {
         return ApiClient().getApiServices()
     }
 
-
-
-
-
-
-
+    @Provides
+    @Singleton
+    internal fun provideDataManager(): AppDataManger {
+        return AppDataManger(provideContext(), provideApiService())
+    }
 }

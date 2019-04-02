@@ -8,6 +8,7 @@ class HomeActivity : BaseActivity() {
 
 
     override fun injectComponents(mActivityComponent: ActivityComponent) {
+        mActivityComponent.inject(this)
 
     }
 
@@ -18,7 +19,7 @@ class HomeActivity : BaseActivity() {
     override fun setUp() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.container,HomeFragment()).commit()
+            .add(R.id.container, HomeFragment()).commit()
 
     }
 

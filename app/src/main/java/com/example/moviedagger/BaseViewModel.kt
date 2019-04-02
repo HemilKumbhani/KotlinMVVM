@@ -3,11 +3,12 @@ package com.example.moviedagger
 
 import androidx.lifecycle.ViewModel
 import com.example.moviedagger.data.ApiServices
+import com.example.moviedagger.data.AppDataManger
 import com.example.moviedagger.ui.base.BaseView
 import com.example.moviedagger.utils.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 
-open class BaseViewModel(val apiServices: ApiServices,
+open class BaseViewModel(val appDataManger: AppDataManger,
     val mSchedulerProvider: SchedulerProvider,
                          val mCompositeDisposable: CompositeDisposable) : ViewModel() {
 
