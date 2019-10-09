@@ -16,6 +16,11 @@ android {
 
     }
     buildTypes {
+
+        all{
+            buildConfigField "String", "apiKey", "\"Place your key here\""
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
