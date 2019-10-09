@@ -1,6 +1,7 @@
 package com.example.moviedagger.ui.home
 
 import com.example.moviedagger.BaseViewModel
+import com.example.moviedagger.BuildConfig
 import com.example.moviedagger.data.ApiServices
 import com.example.moviedagger.data.AppDataManger
 import com.example.moviedagger.di.PerActivity
@@ -23,13 +24,13 @@ class HomeViewModel
         super.onAttachView(view)
         mView = view as HomeView
 
-        getMovies( "1");
+        getMovies( "1")
 
     }
 
     fun getMovies(pageNo:String) {
         mCompositeDisposable.add(
-            appDataManger.getMovies("4f820c5822018f30c6ac562809e4eb65", pageNo)
+            appDataManger.getMovies(BuildConfig.apiKey, pageNo)
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe({
